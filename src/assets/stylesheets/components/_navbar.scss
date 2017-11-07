@@ -1,0 +1,38 @@
+/*
+  NAVBAR
+ */
+
+.navbar {
+  height: 60px;
+
+  background: linear-gradient(50deg, darken($brand-color, 20%), $brand-color);
+}
+
+  .navbar--centred {
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar__link {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .navbar__item--logo > svg {
+    width: 45px;
+    height: 45px;
+    padding-top: 5px;
+    fill: #fff;
+  }
+
+  .navbar__item--account {
+    margin-left: auto;
+  }
+
+    .navbar__img-profil {
+      display: inline;
+      width: 40px;
+      height: 40px;
+      border-radius: 100px;
+      margin-right: $spacing-unit-small;
+    }
