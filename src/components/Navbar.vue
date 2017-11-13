@@ -1,30 +1,33 @@
 <template>
-  <nav class="navbar navbar--centred mrgb">
+  <el-menu
+    :default-active="activeIndex1"
+    class="navbar mrgb"
+    mode="horizontal"
+    @select="handleSelect">
     <div class="container">
-      <ul class="navbar__list navbar--centred list-inline">
-        <li class="navbar__item--logo">
-          <svg>
-            <use xlink:href="#logo"></use>
-          </svg>
-        </li>
-        <li><router-link to="Home" class="navbar__link text-bold">Home</router-link></li>
-        <li><router-link to="Users" class="navbar__link text-bold">Users</router-link></li>
-        <li><router-link to="Events" class="navbar__link text-bold">Events</router-link></li>
-        <li v-if="!currentUser" class="navbar__item--account">
-          <span class="navbar--centred">
-            <router-link to="Login" class="navbar__link text-bold">Login</router-link>
-          </span>
-        </li>
-        <li v-else class="navbar__item--account">
-          <span class="navbar--centred">
-            <img v-bind:src="currentUser.photoURL" class="navbar__img-profil">
-            <a href="#" class="navbar__link text-bold">{{ currentUser.displayName }}</a>
-          </span>
-        </li>
-        </span>
-      </ul>
+      <router-link to="Home">
+        <el-menu-item index="1">Home</el-menu-item>
+      </router-link>
+      <router-link to="Users">
+        <el-menu-item index="2">Users</el-menu-item>
+      </router-link>
+      <router-link to="Events">
+        <el-menu-item index="3">Events</el-menu-item>
+      </router-link>
+      <router-link v-if="!currentUser" to="Login" class="el-menu-item--flex">
+        <el-menu-item index="4">Sign in </el-menu-item>
+      </router-link>
+      <el-submenu v-else index="4">
+        <template slot="title">
+          <img v-bind:src="currentUser.photoURL" class="el-submenu__avatar">
+          {{ currentUser.displayName }}
+        </template>
+        <el-menu-item index="2-1">item one</el-menu-item>
+        <el-menu-item index="2-2">item two</el-menu-item>
+        <el-menu-item index="2-3" @click="signOut">Sign out</el-menu-item>
+      </el-submenu>
     </div>
-  </nav>
+  </el-menu>
 </template>
 
 <script>
@@ -45,6 +48,14 @@ export default {
         this.currentUser = userExternal
       }
     })
+  },
+
+  methods: {
+    signOut () {
+      firebaseConfig.firebase.auth().signOut().then(() => {
+        this.userExternal = null
+      }).catch(error => console.log(error))
+    }
   }
 }
 </script>

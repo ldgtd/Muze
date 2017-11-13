@@ -2,37 +2,57 @@
   NAVBAR
  */
 
-.navbar {
-  height: 60px;
-
+.navbar.el-menu--horizontal {
   background: linear-gradient(50deg, darken($brand-color, 20%), $brand-color);
-}
+  border-bottom: 1px solid $brand-color;
 
-  .navbar--centred {
+  .container {
     display: flex;
-    align-items: center;
+    outline: none;
+
+    .el-submenu,
+    .el-menu-item--flex {
+      margin-left: auto;
+    }
   }
 
-  .navbar__link {
+  .el-menu-item,
+  .el-submenu {
     color: #fff;
-    text-decoration: none;
-  }
 
-  .navbar__item--logo > svg {
-    width: 45px;
-    height: 45px;
-    padding-top: 5px;
-    fill: #fff;
-  }
+    .el-menu-item {
+      color: $alt-color-dark;
+    }
 
-  .navbar__item--account {
-    margin-left: auto;
-  }
+    .el-submenu__title,
+    .el-submenu__icon-arrow {
+      color: #fff;
 
-    .navbar__img-profil {
+      &:hover {
+        background-color: darken($brand-color, 25%);
+      }
+    }
+
+    .el-submenu__avatar {
       display: inline;
       width: 40px;
       height: 40px;
       border-radius: 100px;
       margin-right: $spacing-unit-small;
     }
+
+    &.is-active {
+      color: #fff;
+      background-color: darken($brand-color, 25%);
+
+      .el-submenu__title {
+        border-bottom: none;
+      }
+    }
+
+    &:hover {
+      color: #fff;
+      background-color: darken($brand-color, 25%);
+    }
+  }
+}
