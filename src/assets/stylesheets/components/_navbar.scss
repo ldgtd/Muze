@@ -4,7 +4,6 @@
 
 .navbar.el-menu--horizontal {
   background: linear-gradient(50deg, darken($brand-color, 20%), $brand-color);
-  border-bottom: 1px solid $brand-color;
 
   .container {
     display: flex;
@@ -19,6 +18,10 @@
   .el-menu-item,
   .el-submenu {
     color: #fff;
+
+    a {
+      text-decoration: none;
+    }
 
     .el-menu-item {
       color: $alt-color-dark;

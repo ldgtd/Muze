@@ -3,10 +3,6 @@
     <button @click="signInWithGoogle" class="btn btn--primary">Sign in with Google</button>
     <!-- <button @click="signInWithFacebook" class="btn btn--primary">Sign in with Facebook</button> -->
   </div>
-  <div v-else>
-    <p>You're login {{userExternal.displayName}}</p>
-    <button @click="signOut" class="btn btn--primary">Sign out</button>
-  </div>
 </template>
 
 <script>
@@ -43,14 +39,10 @@ export default {
     signInWithGoogle () {
       const provider = new firebaseConfig.firebase.auth.GoogleAuthProvider()
       firebaseConfig.firebase.auth().signInWithRedirect(provider).then((result) => {
-        this.userExternal = result.userExternal
+        this.currentUser = result.userExternal
       }).catch(error => console.log(error))
-    },
 
-    signOut () {
-      firebaseConfig.firebase.auth().signOut().then(() => {
-        this.userExternal = null
-      }).catch(error => console.log(error))
+      this.$router.push('home')
     },
 
     addUser () {

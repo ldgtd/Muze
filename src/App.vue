@@ -12,6 +12,8 @@ import Navbar from '@/components/Navbar'
 import Events from '@/components/Events'
 import Login from '@/components/Login'
 import About from '@/components/About'
+import Users from '@/components/Users'
+import Profil from '@/components/Profil'
 
 export default {
   name: 'app',
@@ -19,7 +21,9 @@ export default {
     Navbar,
     Login,
     Events,
-    About
+    About,
+    Users,
+    Profil
   }
 }
 </script>
